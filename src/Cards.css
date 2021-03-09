@@ -1,0 +1,14 @@
+.character-cards {
+	width: 100%;
+}
+.character-name {
+	padding: 0 20px;
+	text-align: left;
+	border: 1px solid grey;
+}
+.character-name:hover {
+	background-color: rgba(128, 128, 128, 0.5);
+}
+.character-cards {
+	width: 100%;
+}

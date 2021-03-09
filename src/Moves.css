@@ -1,0 +1,22 @@
+.moves-content {
+	display: flex;
+	flex-direction: column;
+	border: 3px solid rgb(1, 64, 94);
+	width: 100%;
+	padding: 7px;
+	margin: 3px;
+}
+.moves-box:hover {
+	background-color: rgb(12, 104, 153);
+	border: 2px solid rgb(102, 250, 254);
+}
+.moves-box {
+	padding: 3px 10px;
+	border: 1px solid rgb(51, 69, 80);
+}
+.moves-first {
+	background-color: rgba(46, 58, 64, 0.8);
+}
+.moves-second {
+	background-color: rgba(37, 47, 51, 0.8);
+}

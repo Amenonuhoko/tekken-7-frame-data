@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import { useState, useEffect } from "react";
+import Cards from "./Cards";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const [loading, setLoading] = useState(false);
+	const [characters, setCharacters] = useState({});
+	useEffect(() => {
+		setLoading(true);
+		axios
+			.get("https://t7frames-server.herokuapp.com/frame-data")
+			.then((response) => {
+				setLoading(false);
+				setCharacters(response.data);
+			});
+	}, []);
+	return (
+		<>
+			<div className="App-header">
+				<img
+					src={process.env.PUBLIC_URL + "icons/tekken_7.png"}
+					alt=""
+					width="700"
+					height="400"
+				/>
+			</div>
+			{loading ? (
+				<>
+					<h1>Loading</h1>
+				</>
+			) : (
+				<>
+					{Object.keys(characters).map((ele, i) => {
+						return (
+							<Cards
+								key={i}
+								characters={characters}
+								ele={ele}
+								name={characters[ele].character}
+							></Cards>
+						);
+					})}
+				</>
+			)}
+		</>
+	);
+};
 
 export default App;
